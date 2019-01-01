@@ -1931,6 +1931,26 @@ if(message.content == prefix+"عواصم"){
                                     serverQueue.textChannel.send(`**${song.title}**, is now playing!`);
                                 }
                                 
-                                
+client.on("guildMemberAdd", (member) => {
+client.channels.get('529511896181768203').edit({name : `『 الأعضاء ↩ ${member.guild.memberCount} 』`});
+})
+client.on("guildMemberRemove", (member) => {
+client.channels.get('529511896181768203').edit({name : `『 الأعضاء ↩ ${member.guild.memberCount} 』`});
+})                                
+
+client.on('message', function(message) {//Narox
+    if (message.channel.type === "dm") {
+        if (message.author.id === client.user.id) return;//Narox
+        var Narox = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setTimestamp()//Narox
+        .setTitle('``I have received a new DM !``')
+        .setThumbnail(`${message.author.avatarURL}`)//Narox
+        .setDescription(`\n\n\`\`\`${message.content}\`\`\``)
+        .setFooter(`From **${message.author.tag} (${message.author.id})**`)
+    client.channels.get("529511550680301578").send({embed:Narox});//Narox
+    }
+});
+
 
 client.login(process.env.BOT_TOKEN);
